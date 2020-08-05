@@ -32,13 +32,13 @@ app.get("/qalenium", (req, res, next) => {
     );
 });
 
-app.get("/circleCI", (req, res, next) => {
+app.get("/sonarCloud", (req, res, next) => {
     res.json(
         {}
     );
 });
 
-app.get("/sonarcloud", (req, res, next) => {
+app.get("/circleCI", (req, res, next) => {
     res.json(
         {}
     );
@@ -69,6 +69,12 @@ app.get("/twitter", (req, res, next) => {
 });
 
 app.get("/instagram", (req, res, next) => {
+    res.json(
+        {}
+    );
+});
+
+app.get("/telegram", (req, res, next) => {
     res.json(
         {}
     );

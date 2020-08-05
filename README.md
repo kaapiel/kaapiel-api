@@ -9,13 +9,13 @@ You can access the resources as follow
 
 `/owner` - Get the projects owner's json object
 
-`/sonar` - TODO
+`/qalenium` - Get QAlenium community informations
+
+`/sonarCloud` - TODO
  
 `/circleCI` - TODO
 
 `/slack` - TODO
-
-`/telegram` - TODO
 
 `/blazemeter` - TODO
 
@@ -25,3 +25,4 @@ You can access the resources as follow
 
 `/instagram` - TODO
 
+`/telegram` - TODO
