@@ -1,10 +1,10 @@
-const request = require('request');
+const axios = require('axios');
 var express = require("express");
 var app = express();
 
 const PORT = process.env.PORT || 8147;
 
-app.listen(PORT, () => {
+app.listen(8888, () => {
     console.log("Server running on port ${PORT}}");
 });
 
@@ -27,7 +27,8 @@ app.get("/listMethods", (req, res, next) => {
 
 app.get("/owner", (req, res, next) => {
     res.json(
-        {"name":"Gabriel Aguido Fraga",
+        {
+            "name":"Gabriel Aguido Fraga",
             "gitHub":"https://github.com/kaapiel",
             "linkedIn":"https://www.linkedin.com/in/gabriel-aguido-fraga/",
             "instagram":"https://www.instagram.com/gabrielaguidofraga/",
@@ -38,7 +39,8 @@ app.get("/owner", (req, res, next) => {
 
 app.get("/qalenium", (req, res, next) => {
     res.json(
-        {"community":"QAlenium",
+        {
+            "community":"QAlenium",
             "gitHub":"https://github.com/QAlenium",
             "linkedIn":"https://www.linkedin.com/company/qalenium",
             "instagram":"to be created",
@@ -48,9 +50,17 @@ app.get("/qalenium", (req, res, next) => {
 });
 
 app.get("/sonarCloud", (req, res, next) => {
-    res.json(
-        {}
-    );
+
+    let resp;
+
+    axios.get('https://sonarcloud.io/api/issues/search?organization=qalenium&languages=java&f=name')
+        .then(response => {
+            resp = response;
+            res.json(resp.data)
+        })
+        .catch(error => {
+            res.json(error)
+        });
 });
 
 app.get("/circleCI", (req, res, next) => {
