@@ -12,7 +12,8 @@ app.get("/owner", (req, res, next) => {
         {"name":"Gabriel Aguido Fraga",
             "gitHub":"https://github.com/kaapiel",
             "linkedIn":"https://www.linkedin.com/in/gabriel-aguido-fraga/",
-            "instagram":"https://www.instagram.com/gabrielaguidofraga/"
+            "instagram":"https://www.instagram.com/gabrielaguidofraga/",
+            "phoneNumber":"+1(514)621-2440"
         }
     );
 });
@@ -22,7 +23,8 @@ app.get("/qalenium", (req, res, next) => {
         {"community":"QAlenium",
             "gitHub":"https://github.com/QAlenium",
             "linkedIn":"https://www.linkedin.com/company/qalenium",
-            "instagram":"to be created"
+            "instagram":"to be created",
+            "phoneNumber":"to be created"
         }
     );
 });
