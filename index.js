@@ -3,8 +3,6 @@ var express = require("express");
 var app = express();
 
 const PORT = process.env.PORT || 8147;
-const QALENEIUM_GROUPID = "-1001241726927L";
-const QALENEIUM_BOT = "1339813179:AAH6Y3bKGhSnafpzTdiDK7Yq-hYhVbdPsKU";
 
 app.listen(PORT, () => {
     console.log("Server running on port ${PORT}}");
