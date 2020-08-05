@@ -9,7 +9,9 @@ You can access the resources as follow
 
 `/owner` - Get the projects owner's json object
 
-`/qalenium` - Get QAlenium community informations
+`/qalenium` - Get QAlenium community information
+
+`/listMethods` - Get all methods available to be accessed
 
 `/sonarCloud` - TODO
  

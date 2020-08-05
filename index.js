@@ -10,6 +10,23 @@ app.listen(PORT, () => {
     console.log("Server running on port ${PORT}}");
 });
 
+app.get("/listMethods", (req, res, next) => {
+    res.json(
+        [
+            "/owner",
+            "/qalenium",
+            "/sonarCloud",
+            "/circleCI",
+            "/slack",
+            "/blazemeter",
+            "/docker",
+            "/twitter",
+            "/instagram",
+            "/telegram"
+        ]
+    );
+});
+
 app.get("/owner", (req, res, next) => {
     res.json(
         {"name":"Gabriel Aguido Fraga",
