@@ -1,0 +1,29 @@
+{
+  "name": "personal-api",
+  "version": "1.0.0",
+  "description": "personal api",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaapiel/personal-api.git"
+  },
+  "keywords": [
+    "personal",
+    "api"
+  ],
+  "author": "Gabriel Aguido Fraga",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaapiel/kaapiel-api/issues"
+  },
+  "engines": {
+    "node": "10.x"
+  },
+  "homepage": "https://github.com/kaapiel/personal-api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
