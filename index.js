@@ -14,14 +14,22 @@ app.get("/listMethods", (req, res, next) => {
         [
             "/owner",
             "/qalenium",
-            "/sonarCloud",
-            "/circleCI",
-            "/slack",
-            "/blazemeter",
-            "/docker",
-            "/twitter",
-            "/instagram",
-            "/telegram"
+            "/sonarCloud/QAlenium",
+            "/sonarCloud/gabs",
+            "/circleCI/QAlenium",
+            "/circleCI/gabs",
+            "/slack/QAlenium",
+            "/slack/gabs",
+            "/blazemeter/QAlenium",
+            "/blazemeter/gabs",
+            "/docker/QAlenium",
+            "/docker/gabs",
+            "/twitter/QAlenium",
+            "/twitter/gabs",
+            "/instagram/QAlenium",
+            "/instagram/gabs",
+            "/telegram/QAlenium",
+            "/telegram/gabs"
         ]
     );
 });
@@ -129,43 +137,85 @@ app.get("/sonarCloud/gabs", (req, res, next) => {
         });
 });
 
-app.get("/circleCI", (req, res, next) => {
+app.get("/circleCI/QAlenium", (req, res, next) => {
     res.json(
         {}
     );
 });
 
-app.get("/slack", (req, res, next) => {
+app.get("/circleCI/gabs", (req, res, next) => {
     res.json(
         {}
     );
 });
 
-app.get("/blazemeter", (req, res, next) => {
+app.get("/slack/QAlenium", (req, res, next) => {
     res.json(
         {}
     );
 });
 
-app.get("/docker", (req, res, next) => {
+app.get("/slack/gabs", (req, res, next) => {
     res.json(
         {}
     );
 });
 
-app.get("/twitter", (req, res, next) => {
+app.get("/blazemeter/QAlenium", (req, res, next) => {
     res.json(
         {}
     );
 });
 
-app.get("/instagram", (req, res, next) => {
+app.get("/blazemeter/gabs", (req, res, next) => {
     res.json(
         {}
     );
 });
 
-app.get("/telegram", (req, res, next) => {
+app.get("/docker/QAlenium", (req, res, next) => {
+    res.json(
+        {}
+    );
+});
+
+app.get("/docker/gabs", (req, res, next) => {
+    res.json(
+        {}
+    );
+});
+
+app.get("/twitter/QAlenium", (req, res, next) => {
+    res.json(
+        {}
+    );
+});
+
+app.get("/twitter/gabs", (req, res, next) => {
+    res.json(
+        {}
+    );
+});
+
+app.get("/instagram/QAlenium", (req, res, next) => {
+    res.json(
+        {}
+    );
+});
+
+app.get("/instagram/gabs", (req, res, next) => {
+    res.json(
+        {}
+    );
+});
+
+app.get("/telegram/QAlenium", (req, res, next) => {
+    res.json(
+        {}
+    );
+});
+
+app.get("/telegram/gabs", (req, res, next) => {
     res.json(
         {}
     );
