@@ -13,7 +13,6 @@ app.get("/listMethods", (req, res, next) => {
         [
             "/owner",
             "/qalenium",
-            "/qalenium/projects",
             "/sonarCloud",
             "/circleCI",
             "/slack",
@@ -33,6 +32,9 @@ app.get("/owner", (req, res, next) => {
             "gitHub":"https://github.com/kaapiel",
             "linkedIn":"https://www.linkedin.com/in/gabriel-aguido-fraga/",
             "instagram":"https://www.instagram.com/gabrielaguidofraga/",
+            "sonarCloud":"https://sonarcloud.io/organizations/gabs",
+            "cirlceCI":"https://circleci.com/gh/kaapiel/<PROJECT>",
+            "slack":"to be created",
             "phoneNumber":"+1(514)621-2440"
         }
     );
@@ -45,12 +47,39 @@ app.get("/qalenium", (req, res, next) => {
             "gitHub":"https://github.com/QAlenium",
             "linkedIn":"https://www.linkedin.com/company/qalenium",
             "instagram":"to be created",
+            "sonarCloud":"https://sonarcloud.io/organizations/qalenium",
+            "cirlceCI":"https://circleci.com/gh/QAlenium/<PROJECT>",
+            "slack":"https://join.slack.com/t/qalenium/shared_invite/enQtOTU5MDY2MTQwOTY3LWYzNGFkMTU5MTFjMmMxYmUyNjkzY2RhYjViZDcxNWVmMzUyNjgxZWJmMGNjYTQ1MGRmMTQ2MGM4NDc5Y2E4MmQ",
             "phoneNumber":"to be created"
         }
     );
 });
 
-app.get("/qalenium/projects", (req, res, next) => {
+app.get("/sonarCloud/QAlenium", (req, res, next) => {
+
+    //make get in the https://sonarcloud.io/api/projects/search?organization=qalenium endpoint
+    //
+    //retrieve all projects as (List<String> "key")
+    //
+    //make another call for each project found using:
+    //https://sonarcloud.io/api/issues/search?organization=qalenium&componentKeys=<KEY>
+    //
+    // Retrieve an object for each project containing:
+    // - String project_name
+    // - List<Issue> issues
+    // - String language
+    //
+    // The issue must contain:
+    // - String message
+    // - String status
+    // - String component (file)
+    // - String severity
+    // - String creation_date
+    // - String type
+    //
+    //Append all projects as a json array (List<Project> projects)
+    //return a json containing all projects information
+
     let resp;
 
     axios.get('https://sonarcloud.io/api/projects/search?organization=qalenium')
@@ -65,9 +94,33 @@ app.get("/qalenium/projects", (req, res, next) => {
 });
 
 app.get("/sonarCloud", (req, res, next) => {
+
+    //make get in the https://sonarcloud.io/api/projects/search?organization=gabs endpoint
+    //
+    //retrieve all projects as (List<String> "key")
+    //
+    //make another call for each project found using:
+    //https://sonarcloud.io/api/issues/search?organization=gabs&componentKeys=<KEY>
+    //
+    // Retrieve an object for each project containing:
+    // - String project_name
+    // - List<Issue> issues
+    // - String language
+    //
+    // The issue must contain:
+    // - String message
+    // - String status
+    // - String component (file)
+    // - String severity
+    // - String creation_date
+    // - String type
+    //
+    //Append all projects as a json array (List<Project> projects)
+    //return a json containing all projects information
+
     let resp;
 
-    axios.get('https://sonarcloud.io/api/issues/search?organization=qalenium&languages=java&f=name')
+    axios.get('https://sonarcloud.io/api/projects/search?organization=gabs')
         .then(response => {
             resp = response;
             res.json(resp.data)
