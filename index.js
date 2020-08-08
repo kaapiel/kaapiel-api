@@ -80,7 +80,7 @@ app.get("/sonarCloud/QAlenium", (req, res, next) => {
     //Append all projects as a json array (List<Project> projects)
     //return a json containing all projects information
 
-    axios.get('https://sonarcloud.io/api/projects/search?organization=qalenium')
+    axios.get('https://sonarcloud.io/api/issues/search?organization=qalenium')
         .then(response => {
             res.json(response.data)
         })
@@ -117,13 +117,7 @@ app.get("/sonarCloud/gabs", (req, res, next) => {
 
     //api token 4da7c74aa1ff200588c80a5dd253c0e6258ff5a1
 
-    const token = Buffer.from('ajhgsdkjasgdjahsgdjas:sahdghasgdjhsa', 'utf8').toString('base64')
-
-    axios.get('https://sonarcloud.io/api/projects/search?organization=gabs', {
-        headers: {
-            'Authorization':`Basic ${token}`
-        }
-    })
+    axios.get('https://sonarcloud.io/api/projects/search?organization=gabs')
         .then(response => {
             res.json(response.data)
         })
