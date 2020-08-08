@@ -120,8 +120,6 @@ app.get("/sonarCloud/gabs", (req, res, next) => {
     //Append all projects as a json array (List<Project> projects)
     //return a json containing all projects information
 
-    //api token 4da7c74aa1ff200588c80a5dd253c0e6258ff5a1
-
     axios.get('https://sonarcloud.io/api/projects/search?organization=gabs', {
         headers: {
             'Authorization':`Basic ${token}`
