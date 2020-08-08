@@ -117,7 +117,13 @@ app.get("/sonarCloud/gabs", (req, res, next) => {
 
     //api token 4da7c74aa1ff200588c80a5dd253c0e6258ff5a1
 
-    axios.get('https://sonarcloud.io/api/projects/search?organization=gabs')
+    let token = new Buffer("4da7c74aa1ff200588c80a5dd253c0e6258ff5a1:").toString('base64');
+
+    axios.get('https://sonarcloud.io/api/projects/search?organization=gabs', {
+        headers: {
+            'Authorization':`Basic ${token}`
+        }
+    })
         .then(response => {
             res.json(response.data)
         })
