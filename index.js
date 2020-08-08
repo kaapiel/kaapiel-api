@@ -1,6 +1,6 @@
 const axios = require('axios');
-var express = require("express");
-var app = express();
+const express = require("express");
+const app = express();
 
 const PORT = process.env.PORT || 8147;
 const token = new Buffer("4da7c74aa1ff200588c80a5dd253c0e6258ff5a1:").toString('base64');
