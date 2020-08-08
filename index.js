@@ -58,8 +58,6 @@ app.get("/qalenium", (req, res, next) => {
 
 app.get("/sonarCloud/QAlenium", (req, res, next) => {
 
-    //make get in the https://sonarcloud.io/api/projects/search?organization=qalenium endpoint
-    //
     //retrieve all projects as (List<String> "key")
     //
     //make another call for each project found using:
@@ -97,8 +95,6 @@ app.get("/sonarCloud/QAlenium", (req, res, next) => {
 
 app.get("/sonarCloud/gabs", (req, res, next) => {
 
-    //make get in the https://sonarcloud.io/api/projects/search?organization=gabs endpoint
-    //
     //retrieve all projects as (List<String> "key")
     //
     //make another call for each project found using:
