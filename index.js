@@ -82,7 +82,7 @@ app.get("/sonarCloud/QAlenium", (req, res, next) => {
 
     axios.get('https://sonarcloud.io/api/projects/search?organization=qalenium')
         .then(response => {
-            res.set(response.data)
+            res.json(response.data)
         })
         .catch(error => {
             res.set(error)
@@ -117,7 +117,7 @@ app.get("/sonarCloud/gabs", (req, res, next) => {
 
     axios.get('https://sonarcloud.io/api/issues/search?organization=qalenium&componentKeys=QAlenium_QAlenium-Ruby')
         .then(response => {
-            res.set(response.data)
+            res.json(response.data)
         })
         .catch(error => {
             res.set(error)
