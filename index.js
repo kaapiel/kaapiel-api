@@ -13,6 +13,7 @@ app.get("/listMethods", (req, res, next) => {
         [
             "/owner",
             "/qalenium",
+            "/qalenium/projects",
             "/sonarCloud",
             "/circleCI",
             "/slack",
@@ -49,8 +50,21 @@ app.get("/qalenium", (req, res, next) => {
     );
 });
 
-app.get("/sonarCloud", (req, res, next) => {
+app.get("/qalenium/projects", (req, res, next) => {
+    let resp;
 
+    axios.get('https://sonarcloud.io/api/projects/search?organization=qalenium')
+        .then(response => {
+            resp = response;
+            res.json(resp.data)
+        })
+        .catch(error => {
+            res.json(error)
+        });
+
+});
+
+app.get("/sonarCloud", (req, res, next) => {
     let resp;
 
     axios.get('https://sonarcloud.io/api/issues/search?organization=qalenium&languages=java&f=name')

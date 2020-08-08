@@ -7,11 +7,13 @@ It is deployed to Heroku server and can be reached by accessing https://kaapiel-
 ### Resources
 You can access the resources as follow
 
+`/listMethods` - Get all methods available to be accessed
+
 `/owner` - Get the projects owner's json object
 
 `/qalenium` - Get QAlenium community information
 
-`/listMethods` - Get all methods available to be accessed
+`/qalenium/projects` - Get the list of QAlenium community's project
 
 `/sonarCloud` - TODO
  
