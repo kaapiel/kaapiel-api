@@ -80,15 +80,9 @@ app.get("/sonarCloud/QAlenium", (req, res, next) => {
     //Append all projects as a json array (List<Project> projects)
     //return a json containing all projects information
 
-    let resp;
-
     axios.get('https://sonarcloud.io/api/projects/search?organization=qalenium')
         .then(response => {
-            resp = response;
-            res.json(resp.data)
-                .catch(error => {
-                    res.json({"Error":error})
-                });
+            res.json(response.data)
         })
         .catch(error => {
             res.json({"Error":error})
@@ -121,15 +115,9 @@ app.get("/sonarCloud", (req, res, next) => {
     //Append all projects as a json array (List<Project> projects)
     //return a json containing all projects information
 
-    let resp;
-
     axios.get('https://sonarcloud.io/api/projects/search?organization=gabs')
         .then(response => {
-            resp = response;
-            res.json(resp.data)
-                .catch(error => {
-                    res.json({"Error":error})
-                });
+            res.json(response.data)
         })
         .catch(error => {
             res.json({"Error":error})
