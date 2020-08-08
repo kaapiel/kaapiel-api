@@ -85,7 +85,7 @@ app.get("/sonarCloud/QAlenium", (req, res, next) => {
             res.set(response.data)
         })
         .catch(error => {
-            res.json({"Error":error})
+            res.set(error)
         });
 
 });
@@ -120,7 +120,7 @@ app.get("/sonarCloud", (req, res, next) => {
             res.set(response.data)
         })
         .catch(error => {
-            res.json({"Error":error})
+            res.set(error)
         });
 });
 
