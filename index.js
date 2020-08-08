@@ -90,7 +90,7 @@ app.get("/sonarCloud/QAlenium", (req, res, next) => {
 
 });
 
-app.get("/sonarCloud", (req, res, next) => {
+app.get("/sonarCloud/gabs", (req, res, next) => {
 
     //make get in the https://sonarcloud.io/api/projects/search?organization=gabs endpoint
     //
@@ -115,7 +115,7 @@ app.get("/sonarCloud", (req, res, next) => {
     //Append all projects as a json array (List<Project> projects)
     //return a json containing all projects information
 
-    axios.get('https://sonarcloud.io/api/projects/search?organization=gabs')
+    axios.get('https://sonarcloud.io/api/issues/search?organization=qalenium&componentKeys=QAlenium_QAlenium-Ruby')
         .then(response => {
             res.set(response.data)
         })
