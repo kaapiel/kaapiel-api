@@ -80,7 +80,7 @@ app.get("/sonarCloud/QAlenium", (req, res, next) => {
     //Append all projects as a json array (List<Project> projects)
     //return a json containing all projects information
 
-    axios.get('https://sonarcloud.io/api/issues/search?organization=qalenium')
+    axios.get('https://sonarcloud.io/api/projects/search?organization=qalenium')
         .then(response => {
             res.json(response.data)
         })
