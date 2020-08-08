@@ -4,7 +4,7 @@ var app = express();
 
 const PORT = process.env.PORT || 8147;
 
-app.listen(PORT, () => {
+app.listen(1111, () => {
     console.log("Server running on port ${PORT}}");
 });
 
@@ -115,9 +115,13 @@ app.get("/sonarCloud/gabs", (req, res, next) => {
     //Append all projects as a json array (List<Project> projects)
     //return a json containing all projects information
 
+    //api token 4da7c74aa1ff200588c80a5dd253c0e6258ff5a1
+
+    const token = Buffer.from('gabriel_aguido@hotmail.com:4pee4aa@_Aguido', 'utf8').toString('base64')
+
     axios.get('https://sonarcloud.io/api/projects/search?organization=gabs', {
         headers: {
-            'Authorization':'token 4da7c74aa1ff200588c80a5dd253c0e6258ff5a1'
+            'Authorization':`Basic ${token}`
         }
     })
         .then(response => {
