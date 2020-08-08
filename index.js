@@ -3,6 +3,7 @@ var express = require("express");
 var app = express();
 
 const PORT = process.env.PORT || 8147;
+const token = new Buffer("4da7c74aa1ff200588c80a5dd253c0e6258ff5a1:").toString('base64');
 
 app.listen(PORT, () => {
     console.log("Server running on port ${PORT}}");
@@ -80,7 +81,11 @@ app.get("/sonarCloud/QAlenium", (req, res, next) => {
     //Append all projects as a json array (List<Project> projects)
     //return a json containing all projects information
 
-    axios.get('https://sonarcloud.io/api/projects/search?organization=qalenium')
+    axios.get('https://sonarcloud.io/api/projects/search?organization=qalenium', {
+        headers: {
+            'Authorization':`Basic ${token}`
+        }
+    })
         .then(response => {
             res.json(response.data)
         })
@@ -116,8 +121,6 @@ app.get("/sonarCloud/gabs", (req, res, next) => {
     //return a json containing all projects information
 
     //api token 4da7c74aa1ff200588c80a5dd253c0e6258ff5a1
-
-    let token = new Buffer("4da7c74aa1ff200588c80a5dd253c0e6258ff5a1:").toString('base64');
 
     axios.get('https://sonarcloud.io/api/projects/search?organization=gabs', {
         headers: {
