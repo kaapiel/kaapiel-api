@@ -82,10 +82,10 @@ app.get("/sonarCloud/QAlenium", (req, res, next) => {
 
     axios.get('https://sonarcloud.io/api/projects/search?organization=qalenium')
         .then(response => {
-            res.json(response.data)
+            res.data(response.data)
         })
         .catch(error => {
-            res.json({"Error":error})
+            res.data({"Error":error})
         });
 
 });
@@ -117,10 +117,10 @@ app.get("/sonarCloud", (req, res, next) => {
 
     axios.get('https://sonarcloud.io/api/projects/search?organization=gabs')
         .then(response => {
-            res.json(response.data)
+            res.data(response.data)
         })
         .catch(error => {
-            res.json({"Error":error})
+            res.data({"Error":error})
         });
 });
 
