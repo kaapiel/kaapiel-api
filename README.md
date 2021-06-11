@@ -9,7 +9,11 @@ You can access the resources as follow
 
 `/listMethods` - Get all methods available to be accessed
 
-TODO - Google assistant calling this API 
+TODO - Google assistant calling this API
+
 TODO - Create `/graph` path
+
 TODO - GET json in `/graph`
+
 TODO - POST json in `/graph`
+
