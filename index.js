@@ -29,7 +29,11 @@ app.get("/listMethods", (req, res, next) => {
             "/instagram/QAlenium",
             "/instagram/gabs",
             "/telegram/QAlenium",
-            "/telegram/gabs"
+            "/telegram/gabs",
+	    "GET /company/getCompanyByDeviceId",
+	    "GET /company/getCompanyList",
+	    "POST /company/createCompany",
+	    "PUT /user/insetCompanyIntoUser"
         ]
     );
 });
@@ -219,4 +223,43 @@ app.get("/telegram/gabs", (req, res, next) => {
     res.json(
         {}
     );
+});
+
+app.get("/company/getCompanyByDeviceId", (req, res, next) => {
+//query: SELECT 'company' from users where user.deviceId = DEVICE_ID;
+//query to json
+
+    res.json(
+        {
+            "company":"Dummy company name"
+        }
+    );
+});
+
+app.get("/company/getCompanyList", (req, res, next) => {
+//query: SELECT * from companies;
+//query to json
+
+    res.json(
+        {
+            "companies": [
+		{
+			"name":"Dummy company1",
+			"logo":"5na7f5abd7d7nfa5sa891b"
+		}
+	]
+        }
+    );
+});
+
+app.post("/company/createCompany", (req, res, next) => {
+//query: INERT into 'companies' company.name as name, company.logo as logo;
+//query to json
+    res.responseCode = 200;
+});
+
+app.put("/user/insetCompanyIntoUser", (req, res, next) => {
+//query: INERT into 'companies' company.name as name, company.logo as logo;
+//query to json
+    res.responseCode = 200;
 });
