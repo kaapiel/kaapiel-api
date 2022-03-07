@@ -1,9 +1,17 @@
 const axios = require('axios');
 const express = require("express");
+const { Client } = require('pg');
 const app = express();
 
 const PORT = process.env.PORT || 8147;
 const token = new Buffer("4da7c74aa1ff200588c80a5dd253c0e6258ff5a1:").toString('base64');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
 app.listen(PORT, () => {
     console.log("Server running on port ${PORT}");
@@ -237,8 +245,16 @@ app.get("/company/getCompanyByDeviceId", (req, res, next) => {
 });
 
 app.get("/company/getCompanyList", (req, res, next) => {
-//query: SELECT * from companies;
-//query to json
+
+client.connect();
+
+client.query('SELECT * from "users";', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
+});
 
     res.json(
         {
