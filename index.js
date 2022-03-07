@@ -249,7 +249,7 @@ app.get("/company/getCompanyList", (req, res, next) => {
 client.connect();
 
 client.query('SELECT * from "users";', (err, res) => {
-  if (err) throw err;
+  if (err) console.log(err);
   for (let row of res.rows) {
     console.log(JSON.stringify(row));
   }
