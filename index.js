@@ -53,3 +53,18 @@ app.get("/owner", (req, res, next) => {
         }
     );
 });
+
+app.get("/qalenium", (req, res, next) => {
+    res.json(
+        {
+            "community":"QAlenium",
+            "gitHub":"https://github.com/QAlenium",
+            "linkedIn":"https://www.linkedin.com/company/qalenium",
+            "instagram":"to be created",
+            "sonarCloud":"https://sonarcloud.io/organizations/qalenium",
+            "cirlceCI":"https://circleci.com/gh/QAlenium/<PROJECT>",
+            "slack":"https://join.slack.com/t/qalenium/shared_invite/enQtOTU5MDY2MTQwOTY3LWYzNGFkMTU5MTFjMmMxYmUyNjkzY2RhYjViZDcxNWVmMzUyNjgxZWJmMGNjYTQ1MGRmMTQ2MGM4NDc5Y2E4MmQ",
+            "phoneNumber":"to be created"
+        }
+    );
+});
