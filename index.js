@@ -171,3 +171,20 @@ app.get("/company/getCompanyList", async (req, res, next) => {
         console.error(e.detail);
     }
 });
+
+app.post("/company/createCompany", async (req, res, next) => {
+    let text = 'Request: ' + JSON.stringify(req.body);
+    let insert_company_query = 'INSERT INTO "companies" (name, logo, flavour_color, login_git, login_apple, login_facebook, login_email) VALUES (\'' + req.body.name + '\', \'' + req.body.logo + '\', \'' + req.body.flavour_color + '\', \'' + req.body.login_git + '\', \'' + req.body.login_apple + '\', \'' + req.body.login_facebook + '\', \'' + req.body.login_email + '\');';
+    let response_text;
+    console.log(text);
+
+    try {
+        const insert_company_query_result = await client.query(insert_company_query);
+        let results = insert_company_query_result.rows;
+        res.status(200).json(JSON.stringify(results));
+        console.log(JSON.stringify(results));
+    } catch (e) {
+        res.status(500).json(e.detail);
+        console.error(e.detail);
+    }
+});
