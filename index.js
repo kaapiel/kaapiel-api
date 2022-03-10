@@ -188,3 +188,20 @@ app.post("/company/createCompany", async (req, res, next) => {
         console.error(e.detail);
     }
 });
+
+app.put("/company/updateCompany/:id", async (req, res, next) => {
+    let text = 'Request: ' + JSON.stringify(req.body);
+    let update_company_query = 'UPDATE "companies" SET name = \'' + req.body.name + '\', logo = \'' + req.body.logo + '\', flavour_color = \'' + req.body.flavour_color + '\', login_git = \'' + req.body.login_git + '\', login_apple = \'' + req.body.login_apple + '\', login_facebook = \'' + req.body.login_facebook + '\', login_email = \'' + req.body.login_email + '\' WHERE "company_id" = \'' + req.params.id + '\';';
+    let response_text;
+    console.log(text);
+    
+    try {
+        const update_company_query_result = await client.query(update_company_query);
+        response_text = 'Company updated.';
+        res.status(200).json(response_text);
+        console.log(JSON.stringify(response_text));
+    } catch (e) {
+        res.status(500).json(e.detail);
+        console.error(e.detail);
+    }
+});
