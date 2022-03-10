@@ -205,3 +205,92 @@ app.put("/company/updateCompany/:id", async (req, res, next) => {
         console.error(e.detail);
     }
 });
+
+app.put("/user/updateUser/:id", async (req, res, next) => {
+    let text = 'Request: ' + JSON.stringify(req.body);
+    let update_user_query = 'UPDATE "users" SET auth = \'' + req.body.auth + '\', email = \'' + req.body.email + '\', company = \'' + req.body.company + '\', device_id = \'' + req.body.device_id + '\' WHERE "user_id" = \'' + req.params.id + '\';';
+    let response_text;
+    console.log(text);
+    
+    try {
+        const update_user_query_result = await client.query(update_user_query);
+        response_text = 'User updated.';
+        res.status(200).json(response_text);
+        console.log(JSON.stringify(response_text));
+    } catch (e) {
+        res.status(500).json(e.detail);
+        console.error(e.detail);
+    }
+});
+
+app.post("/user/signin", async (req, res, next) => {
+    let select_user_query = 'SELECT * from "users" where "email" = \'' + req.body.email + '\';';
+    let select_auth_query = 'SELECT "auth" from "users" where "email" = \'' + req.body.email + '\';';
+    let response_text;
+
+    try {
+        const select_user_query_result = await client.query(select_user_query);
+        if (select_user_query_result.rows == 0) {
+            response_text = 'Error: Email not registered';
+            console.log(response_text);
+            res.status(500).json(response_text);
+            return;
+        } else {
+            console.log("Email exists. Proceeding to login.");
+        }
+    } catch (e) {
+        res.status(500).json(e.detail);
+        console.error(e.detail);
+    }
+    
+    try {
+        const select_auth_query_result = await client.query(select_auth_query);
+
+        if (select_auth_query_result.rows <= 0) {
+            response_text = 'Error: No results for query -> ' + select_auth_query;
+            res.status(500).json(response_text);
+            console.log(response_text);
+            return;
+        }
+
+        if (select_auth_query_result.rows[0].auth == new Buffer(req.body.email + ':' + req.body.auth).toString('base64')) {
+            response_text = "User authenticated successfully."
+            res.status(200).json(response_text);
+            console.log(JSON.stringify(response_text));
+        } else {
+            response_text = 'Error: Invalid credentials';
+            res.status(500).json(response_text);
+            console.log(response_text);
+        }
+    } catch (e) {
+        res.status(500).json(e.detail);
+        console.error(e.detail);
+    }
+
+});
+
+app.post("/user/signup", async (req, res, next) => {
+    let select_user_query = 'SELECT * from "users" where "email" = \'' + req.body.email + '\';';
+    let insert_user_query = 'INSERT INTO "users" (auth, email, company, device_id) VALUES (\'' + new Buffer(req.body.email + ':' + req.body.auth).toString('base64') + '\', \'' + req.body.email + '\', \'' + req.body.company + '\', \'' + req.body.device_id + '\');';
+    let response_text;
+
+    try {
+        const select_user_query_result = await client.query(select_user_query);
+        if (select_user_query_result.rows > 0) {
+            response_text = 'Error: email already taken';
+            res.status(500).json(response_text);
+            console.log(response_text);
+        } else {
+            // validate valid email
+            // validate valid json
+            // validate all mandatory fields
+            const insert_user_query_result = await client.query(insert_user_query);
+            response_text = 'User created successfully';
+            res.status(200).json(response_text);
+            console.log(response_text);
+        }
+    } catch (e) {
+        res.status(500).json(e.detail);
+        console.error(e.detail);
+    }
+});
