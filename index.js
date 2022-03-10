@@ -38,3 +38,18 @@ app.get("/listMethods", (req, res, next) => {
         ]
     );
 });
+
+app.get("/owner", (req, res, next) => {
+    res.json(
+        {
+            "name":"Gabriel Aguido Fraga",
+            "gitHub":"https://github.com/kaapiel",
+            "linkedIn":"https://www.linkedin.com/in/gabriel-aguido-fraga/",
+            "instagram":"https://www.instagram.com/gabrielaguidofraga/",
+            "sonarCloud":"https://sonarcloud.io/organizations/gabs",
+            "cirlceCI":"https://circleci.com/gh/kaapiel/<PROJECT>",
+            "slack":"to be created",
+            "phoneNumber":"+1(514)621-2440"
+        }
+    );
+});
