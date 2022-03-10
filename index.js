@@ -105,3 +105,39 @@ app.get("/sonarCloud/QAlenium", (req, res, next) => {
         });
 
 });
+
+app.get("/sonarCloud/gabs", (req, res, next) => {
+
+    //retrieve all projects as (List<String> "key")
+    //
+    //make another call for each project found using:
+    //https://sonarcloud.io/api/issues/search?organization=gabs&componentKeys=<KEY>
+    //
+    // Retrieve an object for each project containing:
+    // - String project_name
+    // - List<Issue> issues
+    // - String language
+    //
+    // The issue must contain:
+    // - String message
+    // - String status
+    // - String component (file)
+    // - String severity
+    // - String creation_date
+    // - String type
+    //
+    //Append all projects as a json array (List<Project> projects)
+    //return a json containing all projects information
+
+    axios.get('https://sonarcloud.io/api/projects/search?organization=gabs', {
+        headers: {
+            'Authorization':`Basic ${token}`
+        }
+    })
+        .then(response => {
+            res.json(response.data)
+        })
+        .catch(error => {
+            res.set(error)
+        });
+});
