@@ -141,3 +141,33 @@ app.get("/sonarCloud/gabs", (req, res, next) => {
             res.set(error)
         });
 });
+
+app.get("/company/getCompanyByDeviceId/:id", async (req, res, next) => {
+    let response_text;
+    let select_company_query = 'SELECT * FROM "companies" WHERE "company_id" = ' + req.params.id + ';';
+    
+    try {
+        const select_company_query_result = await client.query(select_company_query);
+        let results = select_company_query_result.rows;
+        res.status(200).json(JSON.stringify(results));
+        console.log(JSON.stringify(results));
+    } catch (e) {
+        res.status(500).json(e.detail);
+        console.error(e.detail);
+    }
+});
+
+app.get("/company/getCompanyList", async (req, res, next) => {
+    let response_text;
+    let select_company_query = 'SELECT * from "companies";';
+
+    try {
+        const select_company_query_result = await client.query(select_company_query);
+        let results = select_company_query_result.rows;
+        res.status(200).json(results);
+        console.log(JSON.stringify(results));
+    } catch (e) {
+        res.status(500).json(e.detail);
+        console.error(e.detail);
+    }
+});
